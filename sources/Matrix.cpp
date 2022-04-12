@@ -111,7 +111,7 @@ namespace zich {
             sum2 += obj2.vec[i];
             sum1 += obj.vec[i];
         }
-        if(sum1<=sum2){
+        if(sum1>=sum2){
             return true;
         }
         else
@@ -132,8 +132,8 @@ namespace zich {
         if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
-        int sum1;
-        int sum2;
+        int sum1=0;
+        int sum2=0;
         for (size_t i = 0; i < obj2.vec.size(); ++i) {
             sum2 += obj2.vec[i];
             sum1 += obj.vec[i];
@@ -148,8 +148,8 @@ namespace zich {
         if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
-        int sum1;
-        int sum2;
+        int sum1=0;
+        int sum2=0;
         for (size_t i = 0; i < obj2.vec.size(); ++i) {
             sum2 += obj2.vec[i];
             sum1 += obj.vec[i];
@@ -164,11 +164,10 @@ namespace zich {
     //the increment/decrement functions
     //prefix
     Matrix& Matrix::operator ++ () {
-        vector<double>  matr;
+//        vector<double>  matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
-            matr.push_back(this->vec[i]+1);
+            this->vec.at(i)++;
         }
-        this->vec=matr;
         return *this;
     }
     //postfix
