@@ -84,34 +84,34 @@ namespace zich {
         return true;
     }
 
-    bool operator < (Matrix const &obj,Matrix const &obj2) {
+    bool operator > (Matrix const &obj,Matrix const &obj2) {
         if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
         int sum1;
         int sum2;
         for (size_t i = 0; i < obj2.vec.size(); ++i) {
-            sum1 += obj2.vec[i];
-            sum2 += obj.vec[i];
+            sum2 += obj2.vec[i];
+            sum1 += obj.vec[i];
         }
-        if(sum1>sum2){
+        if(sum1<sum2){
             return true;
         }
         else
             return false;
 
     }
-    bool operator <= (Matrix const &obj,Matrix const &obj2) {
+    bool operator >= (Matrix const &obj,Matrix const &obj2) {
         if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
         int sum1;
         int sum2;
         for (size_t i = 0; i < obj2.vec.size(); ++i) {
-            sum1 += obj2.vec[i];
-            sum2 += obj.vec[i];
+            sum2 += obj2.vec[i];
+            sum1 += obj.vec[i];
         }
-        if(sum1>=sum2){
+        if(sum1<=sum2){
             return true;
         }
         else
@@ -128,15 +128,15 @@ namespace zich {
         }
         return false;
     }
-    bool operator >= (Matrix const &obj,Matrix const &obj2) {
+    bool operator <= (Matrix const &obj,Matrix const &obj2) {
         if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
         int sum1;
         int sum2;
         for (size_t i = 0; i < obj2.vec.size(); ++i) {
-            sum1 += obj2.vec[i];
-            sum2 += obj.vec[i];
+            sum2 += obj2.vec[i];
+            sum1 += obj.vec[i];
         }
         if(sum1<=sum2){
             return true;
@@ -144,15 +144,15 @@ namespace zich {
         else
             return false;
     }
-    bool operator > (Matrix const &obj,Matrix const &obj2) {
+    bool operator < (Matrix const &obj,Matrix const &obj2) {
         if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
         int sum1;
         int sum2;
         for (size_t i = 0; i < obj2.vec.size(); ++i) {
-            sum1 += obj2.vec[i];
-            sum2 += obj.vec[i];
+            sum2 += obj2.vec[i];
+            sum1 += obj.vec[i];
         }
         if(sum1<sum2){
             return true;
