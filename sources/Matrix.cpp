@@ -21,12 +21,13 @@ namespace zich {
         if(obj.col!=col || obj.row!=row){
             throw("Illegal num of col/rows");
         }
-        vector<double>  matr;
+//        vector<double>  matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
-            matr.push_back(this->vec[i]+obj.vec[i]);
+            this->vec[i]+=obj.vec[i];
         }
-        Matrix m(matr,obj.row,obj.col);
-        return m;
+
+//        Matrix m(matr,obj.row,obj.col);
+        return *this;
     }
 
     Matrix Matrix::operator + () const{
@@ -63,12 +64,12 @@ namespace zich {
         if(obj.col!=col || obj.row!=row){
             throw("Illegal num of col/rows");
         }
-        vector<double>  matr;
+//        vector<double>  matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
-            matr.push_back(this->vec[i]-obj.vec[i]);
+            this->vec[i]-=obj.vec[i];
         }
-        Matrix m(matr,obj.row,obj.col);
-        return m;
+//        Matrix m(matr,obj.row,obj.col);
+        return *this;
     }
 
     //the equals operators
@@ -105,8 +106,8 @@ namespace zich {
         if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
-        int sum1;
-        int sum2;
+        int sum1=0;
+        int sum2=0;
         for (size_t i = 0; i < obj2.vec.size(); ++i) {
             sum2 += obj2.vec[i];
             sum1 += obj.vec[i];
@@ -166,18 +167,18 @@ namespace zich {
     Matrix& Matrix::operator ++ () {
 //        vector<double>  matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
-            this->vec.at(i)++;
+            this->vec[i]++;
         }
         return *this;
     }
     //postfix
     Matrix Matrix::operator ++ (int dummy_flag_for_postfix_increment) {
         Matrix copy = *this;
-        vector<double>  matr;
+//        vector<double>  matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
-            matr.push_back(this->vec[i]+1);
+            this->vec[i]++;
         }
-        this->vec=matr;
+//        this->vec=matr;
         return copy;
     }
 
@@ -195,21 +196,21 @@ namespace zich {
 //    }
     //prefix
     Matrix& Matrix::operator -- () {
-        vector<double>  matr;
+//        vector<double>  matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
-            matr.push_back(this->vec[i]-1);
+            this->vec[i]--;
         }
-        this->vec=matr;
+//        this->vec=matr;
         return *this;
     }
     //postfix
     Matrix Matrix::operator -- (int dummy_flag_for_postfix_increment) {
         Matrix copy = *this;
-        vector<double> matr;
+//        vector<double> matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
-            matr.push_back(this->vec[i] + 1);
+            this->vec[i] -- ;
         }
-        this->vec = matr;
+//        this->vec = matr;
         return copy;
     }
     //multiplying with scalar

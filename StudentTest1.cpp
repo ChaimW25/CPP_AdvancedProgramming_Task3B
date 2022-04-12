@@ -7,7 +7,7 @@
 #include <cmath>
 
 using namespace std;
-namespace zich{
+namespace zich{ 
 
 const int ten = 10;
 
@@ -36,11 +36,11 @@ TEST_CASE("Case: Invalid multiplication and amount"){
     Matrix mat(arr,1,1);
     CHECK_THROWS(mat1*mat2);
     CHECK_THROWS(mat2*mat1);
-    CHECK_THROWS(mat2+mat1);
+    CHECK_THROWS(mat2+mat1);  
     CHECK_THROWS(mat1+mat2);
     CHECK_THROWS(mat+mat2);
     CHECK_THROWS(mat1+mat);
-    CHECK_THROWS(mat2*mat);
+    CHECK_THROWS(mat2*mat);      
     }
 
     for (double i = 0; i < ten; i++)
@@ -52,7 +52,7 @@ TEST_CASE("Case: Invalid multiplication and amount"){
     Matrix mat2(arr2,1,1);
     CHECK_THROWS(mat2*mat1);
     CHECK_THROWS(mat1*mat2);
-    }
+    }     
     }
 }
 TEST_CASE("Case: Invalid Subtraction matrix"){
@@ -63,7 +63,7 @@ TEST_CASE("Case: Invalid Subtraction matrix"){
     Matrix mat1(arr1,2,2);
     Matrix mat2(arr2,3,3);
     CHECK_THROWS(mat1-mat2);
-    CHECK_THROWS(mat2-mat1);
+    CHECK_THROWS(mat2-mat1);  
     }
 }
 
@@ -145,7 +145,7 @@ TEST_CASE("Subtraction and amount"){
 
         vector<double> vec1_minus = {-i*random,-i*random,-i*random,-i*random,-i*random,-i*random,-i*random,-i*random,-i*random};
         Matrix matrix_minus(vec1_minus, 3, 3);
-
+        
         vector<double> vec_sub = {i*random-k,i*random,i*random,i*random,i*random-k,i*random,i*random,i*random,i*random-k};
         Matrix matrix_sub(vec_sub, 3, 3);
 
@@ -172,7 +172,7 @@ TEST_CASE("CHECK ++ and -- operators"){
 
         vector<double> vec1_minus = {-i*random,-i*random,-i*random,-i*random,-i*random,-i*random,-i*random,-i*random,-i*random};
         Matrix matrix_minus(vec1_minus, 3, 3);
-
+        
         vector<double> vec_sub = {i*random-k,i*random,i*random,i*random,i*random-k,i*random,i*random,i*random,i*random-k};
         Matrix matrix_sub(vec_sub, 3, 3);
 
@@ -180,6 +180,7 @@ TEST_CASE("CHECK ++ and -- operators"){
         Matrix matrix_(vec_, 3, 3);
         CHECK(((matrix++) == matrix_v));
         CHECK(((matrix--) == mat));
+
         CHECK(((++matrix) == mat));
         ++matrix;
         CHECK(((--matrix) == mat));
