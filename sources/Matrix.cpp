@@ -5,7 +5,7 @@ using namespace std;
 
 namespace zich {
 
-    Matrix Matrix::operator + (Matrix const &obj) {
+    Matrix Matrix::operator + (Matrix const &obj)const {
         if(obj.col!=col || obj.row!=row){
             throw("Illegal num of col/rows");
         }
@@ -17,7 +17,7 @@ namespace zich {
         return m;
     }
 
-    Matrix& Matrix::operator += (Matrix const &obj) {
+    Matrix Matrix::operator += (Matrix const &obj)  {
         if(obj.col!=col || obj.row!=row){
             throw("Illegal num of col/rows");
         }
@@ -25,11 +25,11 @@ namespace zich {
         for (size_t i = 0; i < this->vec.size(); ++i) {
             matr.push_back(this->vec[i]+obj.vec[i]);
         }
-        this->vec=matr;
-        return *this;
+        Matrix m(matr,obj.row,obj.col);
+        return m;
     }
 
-    Matrix Matrix::operator + () {
+    Matrix Matrix::operator + () const{
 
         vector<double>  matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
@@ -40,7 +40,7 @@ namespace zich {
     }
 
     //    //the '-' operators
-    Matrix Matrix::operator - (Matrix const &obj) {
+    Matrix Matrix::operator - (Matrix const &obj) const{
         if(obj.col!=col || obj.row!=row){
             throw("Illegal num of col/rows");
         }
@@ -51,7 +51,7 @@ namespace zich {
         Matrix m(matr,obj.row,obj.col);
         return m;
     }
-    Matrix Matrix::operator - () {
+    Matrix Matrix::operator - () const {
         vector<double>  matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
             matr.push_back(-1*this->vec[i]);
@@ -59,7 +59,7 @@ namespace zich {
         Matrix m(matr,this->row,this->col);
         return m;
     }
-    Matrix& Matrix::operator -= (Matrix const &obj) {
+    Matrix Matrix::operator -= (Matrix const &obj) {
         if(obj.col!=col || obj.row!=row){
             throw("Illegal num of col/rows");
         }
@@ -67,31 +67,31 @@ namespace zich {
         for (size_t i = 0; i < this->vec.size(); ++i) {
             matr.push_back(this->vec[i]-obj.vec[i]);
         }
-        this->vec=matr;
-        return *this;
+        Matrix m(matr,obj.row,obj.col);
+        return m;
     }
 
     //the equals operators
-    bool Matrix::operator == (Matrix const &obj) {
-        if(obj.col!=col || obj.row!=row){
+    bool operator == (Matrix const &obj,Matrix const &obj2) {
+        if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
-        for (size_t i = 0; i < this->vec.size(); ++i) {
-            if(this->vec[i]!=obj.vec[i]){
+        for (size_t i = 0; i < obj2.vec.size(); ++i) {
+            if(obj2.vec[i]!=obj.vec[i]){
                 return false;
             }
         }
         return true;
     }
 
-    bool Matrix::operator > (Matrix const &obj) {
-        if(obj.col!=col || obj.row!=row){
+    bool operator < (Matrix const &obj,Matrix const &obj2) {
+        if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
         int sum1;
         int sum2;
-        for (size_t i = 0; i < this->vec.size(); ++i) {
-            sum1 += this->vec[i];
+        for (size_t i = 0; i < obj2.vec.size(); ++i) {
+            sum1 += obj2.vec[i];
             sum2 += obj.vec[i];
         }
         if(sum1>sum2){
@@ -101,14 +101,14 @@ namespace zich {
             return false;
 
     }
-    bool Matrix::operator >= (Matrix const &obj) {
-        if(obj.col!=col || obj.row!=row){
+    bool operator <= (Matrix const &obj,Matrix const &obj2) {
+        if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
         int sum1;
         int sum2;
-        for (size_t i = 0; i < this->vec.size(); ++i) {
-            sum1 += this->vec[i];
+        for (size_t i = 0; i < obj2.vec.size(); ++i) {
+            sum1 += obj2.vec[i];
             sum2 += obj.vec[i];
         }
         if(sum1>=sum2){
@@ -117,25 +117,25 @@ namespace zich {
         else
             return false;
     }
-    bool Matrix::operator != (Matrix const &obj) {
-        if(obj.col!=col || obj.row!=row){
+    bool operator != (Matrix const &obj,Matrix const &obj2) {
+        if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
-        for (size_t i = 0; i < this->vec.size(); ++i) {
-            if(this->vec[i]!=obj.vec[i]){
+        for (size_t i = 0; i < obj2.vec.size(); ++i) {
+            if(obj2.vec[i]!=obj.vec[i]){
                 return true;
             }
         }
         return false;
     }
-    bool Matrix::operator <= (Matrix const &obj) {
-        if(obj.col!=col || obj.row!=row){
+    bool operator >= (Matrix const &obj,Matrix const &obj2) {
+        if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
         int sum1;
         int sum2;
-        for (size_t i = 0; i < this->vec.size(); ++i) {
-            sum1 += this->vec[i];
+        for (size_t i = 0; i < obj2.vec.size(); ++i) {
+            sum1 += obj2.vec[i];
             sum2 += obj.vec[i];
         }
         if(sum1<=sum2){
@@ -144,14 +144,14 @@ namespace zich {
         else
             return false;
     }
-    bool Matrix::operator < (Matrix const &obj) {
-        if(obj.col!=col || obj.row!=row){
+    bool operator > (Matrix const &obj,Matrix const &obj2) {
+        if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
         int sum1;
         int sum2;
-        for (size_t i = 0; i < this->vec.size(); ++i) {
-            sum1 += this->vec[i];
+        for (size_t i = 0; i < obj2.vec.size(); ++i) {
+            sum1 += obj2.vec[i];
             sum2 += obj.vec[i];
         }
         if(sum1<sum2){
@@ -222,13 +222,13 @@ namespace zich {
         Matrix m(matr,this->row,this->col);
         return m;
     }
-    Matrix& Matrix::operator *= (double scalar) {
+    Matrix Matrix::operator *= (double scalar) {
         vector<double>  matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
             matr.push_back(this->vec[i]*scalar);
         }
-        this->vec=matr;
-        return *this;
+        Matrix m(matr,this->row,this->col);
+        return m;
     }
     // matrix muliplying
     Matrix Matrix::operator * (Matrix const &obj) {
@@ -249,7 +249,7 @@ namespace zich {
         return m;
     }
 
-    Matrix& Matrix::operator *= (Matrix const &obj) {
+    Matrix Matrix::operator *= (Matrix const &obj) {
         if(obj.row!=this->col){
             throw("Illegal num of col/rows");
         }
@@ -263,13 +263,24 @@ namespace zich {
                 matr.push_back(sum);
             }
         }
-        this->vec=matr;
-        return *this;
+        Matrix m(matr,this->row,this->col);
+        return m;
     }
 
     //operators for istream and ostream
     std::ostream& operator<< (std::ostream& output, const Matrix& c){
-        return output;
+        string str="";
+        for (size_t i = 0; i < c.vec.size(); ++i) {
+            if(i%c.col==0){
+                str+="[";
+            }
+            str+= to_string(c.vec[i])+" ";
+            if(i% c.col==c.col-1){
+                str+="]\n";
+            }
+
+        }
+        return (output<<str<<endl);
     }
     std::istream& operator>> (std::istream& input , Matrix& c){
         return input;
