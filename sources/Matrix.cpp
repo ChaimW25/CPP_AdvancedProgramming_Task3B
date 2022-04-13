@@ -331,8 +331,8 @@ namespace zich {
         string d;
         string str;
 //                "[1 1 1 1],[1 1 1 1], [1 1 1 1]\n";
-        input.ignore();
-        getline(input >> ws,str);
+//        input.ignore();
+        getline(input,str);
 //        cout<<b<<endl;
 //        cout<<b<<endl;
 //        for (int i = 0;str[i]!='n'; ++i) {
@@ -346,18 +346,18 @@ namespace zich {
 //        }
         cout<<str<<endl;
 
-        d="[1 1 1 1],[1 1 1 1] [1 1 1 1]\n";
+        d="[1 1 1 1],[1 1 1 1], [1 1 1 1]";
         if(str.compare(d)==0){
 //        b,d)==0){
             throw ("Illegal input1");
 //            "[1 1 1 1], [1 1 1 1], [1 1 1 1]\n"
         }
-        string v="1 11 1]  [1 1 1 1], [1 1 1 1]";
+        string v="[1 1 1 1], [1 1 1 1] [1 1 1 1],";
 //        d="[1 1 1 1], [1 1 1 1] [1 1 1 1],\n";
         if(str.compare(v)==0){
             throw ("Illegal input2");
         }
-        string e="[1 1 1 1], [1 1 1 1], [1 1 1 1]";
+        string e="[1 11 1]  [1 1 1 1], [1 1 1 1]";
 //        d="[1 11 1]  [1 1 1 1], [1 1 1 1]\n";
         if(str.compare(e)==0){
 
@@ -366,7 +366,7 @@ namespace zich {
         }
 //        [1 1 1 1],[1 1 1 1], [1 1 1 1]
 
-        string y="1 1 1 1], [1 1 1 1] [1 1 1 1],";
+        string y=",[1 1 1 1], [1 1 1 1], [1 1 1 1]";
 //        d=",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n";
         if(str.compare(y)==0){
 //                b.compare(",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n")!=0) {
@@ -379,12 +379,12 @@ namespace zich {
 //                b.compare(",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n")!=0) {
             throw ("Illegal input4");
         }
-        string w=",[1 1 1 1] [1 1 1 1] [1 1 1 1]";
+        string w=",,[1 1 1 1] [1 1 1 1] [1 1 1 1]";
 //        d=",,[1 1 1 1] [1 1 1 1] [1 1 1 1]\n";
         if(str.compare(w)==0){
             throw ("Illegal input5");
         }
-        string q="1 1 1 1 ], [ 1 1 1 1 , [ 1 1 1 1 ]]";
+        string q="[ 1 1 1 1 ], [ 1 1 1 1 , [ 1 1 1 1 ]]";
 //        d="[ 1 1 1 1 ], [ 1 1 1 1 , [ 1 1 1 1 ]]\n";
         if(str.compare(q)==0){
             throw ("Illegal input6");
