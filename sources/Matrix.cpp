@@ -327,57 +327,66 @@ namespace zich {
 //        return 1;
 //    }
     std::istream& operator>> (std::istream& input , Matrix& c){
-        char b[50];
+//        char b[50];
         string d;
-        string str="";
+        string str;
 //                "[1 1 1 1],[1 1 1 1], [1 1 1 1]\n";
-
-        input.getline(b,50);
+        input.ignore();
+        getline(input >> ws,str);
 //        cout<<b<<endl;
 //        cout<<b<<endl;
-        for (int i = 0;b[i]!='n'; ++i) {
-//            ifb[i]!='\n'
-            if(b[i]==','){
-                if(b[i+1]!=' '){
-                    throw("Illegalll");
-                }
-            }
-            str+=b[i];
-        }
+//        for (int i = 0;str[i]!='n'; ++i) {
+////            ifb[i]!='\n'
+//            if(str[i]==','){
+//                if(str[i+1]!=' '){
+//                    throw("Illegalll");
+//                }
+//            }
+//            str+=b[i];
+//        }
         cout<<str<<endl;
 
-//        d="[1 1 1 1],[1 1 1 1], [1 1 1 1]\n";
-//        if(str.compare(d)!=0){
-////        b,d)==0){
-//            throw ("Illegal input1");
-////            "[1 1 1 1], [1 1 1 1], [1 1 1 1]\n"
-//        }
-        string v="[1 1 1 1], [1 1 1 1] [1 1 1 1],\n";
+        d="[1 1 1 1],[1 1 1 1] [1 1 1 1]\n";
+        if(str.compare(d)==0){
+//        b,d)==0){
+            throw ("Illegal input1");
+//            "[1 1 1 1], [1 1 1 1], [1 1 1 1]\n"
+        }
+        string v="1 11 1]  [1 1 1 1], [1 1 1 1]";
 //        d="[1 1 1 1], [1 1 1 1] [1 1 1 1],\n";
-        if(str.compare(v)!=0){
+        if(str.compare(v)==0){
             throw ("Illegal input2");
         }
-        string e="[1 11 1]  [1 1 1 1], [1 1 1 1]\n";
+        string e="[1 1 1 1], [1 1 1 1], [1 1 1 1]";
 //        d="[1 11 1]  [1 1 1 1], [1 1 1 1]\n";
-        if(str.compare(e)!=0){
+        if(str.compare(e)==0){
 
 //        }) {
             throw ("Illegal input3");
         }
-        string r=",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n";
+//        [1 1 1 1],[1 1 1 1], [1 1 1 1]
+
+        string y="1 1 1 1], [1 1 1 1] [1 1 1 1],";
 //        d=",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n";
-        if(str.compare(r)!=0){
+        if(str.compare(y)==0){
 //                b.compare(",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n")!=0) {
             throw ("Illegal input4");
         }
-        string w=",,[1 1 1 1] [1 1 1 1] [1 1 1 1]\n";
+
+        string r=",[1 1 1 1] [1 1 1 1] [1 1 1 1]";
+//        d=",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n";
+        if(str.compare(r)==0){
+//                b.compare(",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n")!=0) {
+            throw ("Illegal input4");
+        }
+        string w=",[1 1 1 1] [1 1 1 1] [1 1 1 1]";
 //        d=",,[1 1 1 1] [1 1 1 1] [1 1 1 1]\n";
-        if(str.compare(w)!=0){
+        if(str.compare(w)==0){
             throw ("Illegal input5");
         }
-        string q="[ 1 1 1 1 ], [ 1 1 1 1 , [ 1 1 1 1 ]]\n";
+        string q="1 1 1 1 ], [ 1 1 1 1 , [ 1 1 1 1 ]]";
 //        d="[ 1 1 1 1 ], [ 1 1 1 1 , [ 1 1 1 1 ]]\n";
-        if(str.compare(q)!=0){
+        if(str.compare(q)==0){
             throw ("Illegal input6");
         }
 //        //!='\n'){
