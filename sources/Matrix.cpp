@@ -96,9 +96,8 @@ namespace zich {
             sum1 += obj.vec[i];
         }
         if(sum1>sum2){
-            return true;
+            return sum1>sum2;
         }
-        else
             return false;
 
     }
@@ -113,10 +112,10 @@ namespace zich {
             sum1 += obj.vec[i];
         }
         if(sum1>=sum2){
-            return true;
+            return sum1>=sum2;
         }
-        else
             return false;
+
     }
     bool operator != (Matrix const &obj,Matrix const &obj2) {
         if(obj.col!=obj2.col || obj.row!=obj2.row){
@@ -140,9 +139,8 @@ namespace zich {
             sum1 += obj.vec[i];
         }
         if(sum1<=sum2){
-            return true;
+            return sum1<=sum2;
         }
-        else
             return false;
     }
     bool operator < (Matrix const &obj,Matrix const &obj2) {
@@ -156,9 +154,8 @@ namespace zich {
             sum1 += obj.vec[i];
         }
         if(sum1<sum2){
-            return true;
+            return sum1<sum2;
         }
-        else
             return false;
     }
 
@@ -295,7 +292,7 @@ namespace zich {
 
     //operators for istream and ostream
     std::ostream& operator<< (std::ostream& output, const Matrix& c){
-        string str="";
+        string str;
         for (size_t i = 0; i < c.vec.size(); ++i) {
             if (i % c.col == 0) {
                 str += "[";
@@ -309,7 +306,7 @@ namespace zich {
                 if (i < c.vec.size() - 1) {
                 str += "]\n";
                 }
-            else {
+                else {
                     str += "]";
                 }
             }
@@ -347,19 +344,19 @@ namespace zich {
         cout<<str<<endl;
 
         d="[1 1 1 1],[1 1 1 1], [1 1 1 1]";
-        if(str.compare(d)==0){
+        if(str==d){
 //        b,d)==0){
             throw ("Illegal input1");
 //            "[1 1 1 1], [1 1 1 1], [1 1 1 1]\n"
         }
         string v="[1 1 1 1], [1 1 1 1] [1 1 1 1],";
 //        d="[1 1 1 1], [1 1 1 1] [1 1 1 1],\n";
-        if(str.compare(v)==0){
+        if(str==v){
             throw ("Illegal input2");
         }
         string e="[1 11 1]  [1 1 1 1], [1 1 1 1]";
 //        d="[1 11 1]  [1 1 1 1], [1 1 1 1]\n";
-        if(str.compare(e)==0){
+        if(str==e){
 
 //        }) {
             throw ("Illegal input3");
@@ -368,25 +365,25 @@ namespace zich {
 
         string y=",[1 1 1 1], [1 1 1 1], [1 1 1 1]";
 //        d=",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n";
-        if(str.compare(y)==0){
+        if(str==y){
 //                b.compare(",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n")!=0) {
             throw ("Illegal input4");
         }
 
         string r=",[1 1 1 1] [1 1 1 1] [1 1 1 1]";
 //        d=",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n";
-        if(str.compare(r)==0){
+        if(str==r){
 //                b.compare(",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n")!=0) {
             throw ("Illegal input4");
         }
         string w=",,[1 1 1 1] [1 1 1 1] [1 1 1 1]";
 //        d=",,[1 1 1 1] [1 1 1 1] [1 1 1 1]\n";
-        if(str.compare(w)==0){
+        if(str==w){
             throw ("Illegal input5");
         }
         string q="[ 1 1 1 1 ], [ 1 1 1 1 , [ 1 1 1 1 ]]";
 //        d="[ 1 1 1 1 ], [ 1 1 1 1 , [ 1 1 1 1 ]]\n";
-        if(str.compare(q)==0){
+        if(str==q){
             throw ("Illegal input6");
         }
 //        //!='\n'){
