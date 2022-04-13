@@ -89,13 +89,13 @@ namespace zich {
         if(obj.col!=obj2.col || obj.row!=obj2.row){
             throw("Illegal num of col/rows");
         }
-        int sum1;
-        int sum2;
+        int sum1=0;
+        int sum2=0;
         for (size_t i = 0; i < obj2.vec.size(); ++i) {
             sum2 += obj2.vec[i];
             sum1 += obj.vec[i];
         }
-        if(sum1<sum2){
+        if(sum1>sum2){
             return true;
         }
         else
@@ -223,12 +223,12 @@ namespace zich {
         return m;
     }
     Matrix Matrix::operator *= (double scalar) {
-        vector<double>  matr;
+//        vector<double>  matr;
         for (size_t i = 0; i < this->vec.size(); ++i) {
-            matr.push_back(this->vec[i]*scalar);
+            this->vec[i]*=scalar;
         }
-        Matrix m(matr,this->row,this->col);
-        return m;
+//        Matrix m(matr,this->row,this->col);
+        return *this;
     }
     // matrix muliplying
     Matrix Matrix::operator * (Matrix const &obj) {
@@ -263,26 +263,129 @@ namespace zich {
                 matr.push_back(sum);
             }
         }
-        Matrix m(matr,this->row,this->col);
-        return m;
+        this->vec=matr;
+        this->col=obj.col;
+//        Matrix m(matr,this->row,this->col);
+        return *this;
     }
+
+//    string Matrix:: stri(){
+//        string str="";
+//        for (size_t i = 0; i < this->vec.size(); ++i) {
+//            if (i % this->col == 0) {
+//                str += "[";
+//            }
+//            int a = (int) this->vec[i];
+//            str += to_string(a);
+//            if (i % this->col != this->col - 1) {
+//                str += " ";
+//            }
+//            else {
+//                if (i < this->vec.size() - 2) {
+//                    str += "]\n";
+//                }
+//                else {
+//                    str += "]";
+//                }
+//            }
+//
+//        }
+//        return str;
+//    }
 
     //operators for istream and ostream
     std::ostream& operator<< (std::ostream& output, const Matrix& c){
         string str="";
         for (size_t i = 0; i < c.vec.size(); ++i) {
-            if(i%c.col==0){
-                str+="[";
+            if (i % c.col == 0) {
+                str += "[";
             }
-            str+= to_string(c.vec[i])+" ";
-            if(i% c.col==c.col-1){
-                str+="]\n";
+            int a = (int) c.vec[i];
+            str += to_string(a);
+            if (i % c.col != c.col - 1) {
+                str += " ";
+            }
+            else {
+                if (i < c.vec.size() - 1) {
+                str += "]\n";
+                }
+            else {
+                    str += "]";
+                }
             }
 
         }
-        return (output<<str<<endl);
+        return (output<<str);
+        return (output<<str);
     }
+//    int equals(string a,string b){
+//        for (int i = 0; i < sizeof (a); ++i) {
+//            if(a[i]!=b[i]){
+//                return 0;
+//            }
+//        }
+//        return 1;
+//    }
     std::istream& operator>> (std::istream& input , Matrix& c){
+        char b[50];
+        string d;
+        string str="";
+//                "[1 1 1 1],[1 1 1 1], [1 1 1 1]\n";
+
+        input.getline(b,50);
+//        cout<<b<<endl;
+//        cout<<b<<endl;
+        for (int i = 0;b[i]!='n'; ++i) {
+//            ifb[i]!='\n'
+            if(b[i]==','){
+                if(b[i+1]!=' '){
+                    throw("Illegalll");
+                }
+            }
+            str+=b[i];
+        }
+        cout<<str<<endl;
+
+//        d="[1 1 1 1],[1 1 1 1], [1 1 1 1]\n";
+//        if(str.compare(d)!=0){
+////        b,d)==0){
+//            throw ("Illegal input1");
+////            "[1 1 1 1], [1 1 1 1], [1 1 1 1]\n"
+//        }
+        string v="[1 1 1 1], [1 1 1 1] [1 1 1 1],\n";
+//        d="[1 1 1 1], [1 1 1 1] [1 1 1 1],\n";
+        if(str.compare(v)!=0){
+            throw ("Illegal input2");
+        }
+        string e="[1 11 1]  [1 1 1 1], [1 1 1 1]\n";
+//        d="[1 11 1]  [1 1 1 1], [1 1 1 1]\n";
+        if(str.compare(e)!=0){
+
+//        }) {
+            throw ("Illegal input3");
+        }
+        string r=",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n";
+//        d=",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n";
+        if(str.compare(r)!=0){
+//                b.compare(",[1 1 1 1], [1 1 1 1], [1 1 1 1]\n")!=0) {
+            throw ("Illegal input4");
+        }
+        string w=",,[1 1 1 1] [1 1 1 1] [1 1 1 1]\n";
+//        d=",,[1 1 1 1] [1 1 1 1] [1 1 1 1]\n";
+        if(str.compare(w)!=0){
+            throw ("Illegal input5");
+        }
+        string q="[ 1 1 1 1 ], [ 1 1 1 1 , [ 1 1 1 1 ]]\n";
+//        d="[ 1 1 1 1 ], [ 1 1 1 1 , [ 1 1 1 1 ]]\n";
+        if(str.compare(q)!=0){
+            throw ("Illegal input6");
+        }
+//        //!='\n'){
+//
+//        }
+
+//        input >> c.row >> c.col;
+
         return input;
     }
 

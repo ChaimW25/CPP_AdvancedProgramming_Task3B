@@ -14,9 +14,15 @@ namespace zich {
 //        vector<vector<double> > mat;
 
 //        std::vector<std::vector<double>> matrix<row,std::vector<double>(col));
-
+        Matrix(){
+            this->row=1;
+            this->col=1;
+            this->vec={1};
+        }
         Matrix(vector<double> v, int ro, int co) {
-
+            if(co<1 || ro<1 || co*ro!=v.size()){
+                throw("Illegal num of col/rows");
+            }
             this->row=(size_t)ro;
             this->col=(size_t)co;
             this->vec=v;
@@ -72,6 +78,7 @@ namespace zich {
         Matrix& operator -- () ;
         Matrix operator ++ (int dummy_flag_for_postfix_increment);
         Matrix operator -- (int dummy_flag_for_postfix_increment);
+//        string  stri();
 
 
             //multiplying with scalar

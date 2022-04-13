@@ -27,6 +27,15 @@ int main() {
     std::vector<double> arr_f= {5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0};
     std::vector<double> arr_h= {9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0};
 
+    std::vector<double> arr1_1 = {0, 1, 1, 1, 0, 1, 1, 1,0};
+    std::vector<double> unit_matrix_1 = {2, 1, 1, 1, 2, 1, 1, 1, 2};
+    std::vector<double> arr_b_1 = {4, 1, 1, 1, 4, 1, 1, 1, 4};
+    std::vector<double> arr_c_1 = {3, 1, 1, 1, 3, 1, 1, 1, 3};
+    std::vector<double> arr_d_1= {5, 1, 1, 1, 5, 1, 1, 1, 5};
+    std::vector<double> arr_e_1= {5, 1, 1, 1, 5, 1, 1, 1, 5, 1, 1, 1};
+    std::vector<double> arr_f_1= {6, 1, 1, 1, 6, 1, 1, 1, 6, 1, 1, 1};
+    std::vector<double> arr_h_1= {10, 1, 1,1, 10, 1, 1, 1, 10, 1, 1, 1};
+
     Matrix mat_un{arr1,3,3};
     Matrix mat1{unit_matrix,3,3};
     Matrix mat2{arr_b,3,3};
@@ -35,17 +44,61 @@ int main() {
     Matrix mat5{arr_e,4,3};
     Matrix mat6{arr_f,4,3};
     Matrix mat7{arr_h,4,3};
+    Matrix mat_un_1{arr1_1,3,3};
+    Matrix mat1_1{unit_matrix_1,3,3};
+    Matrix mat2_2{arr_b_1,3,3};
+    Matrix mat3_3{arr_c_1,3,3};
+    Matrix mat4_4{arr_d_1,3,3};
+    Matrix mat5_5{arr_e_1,4,3};
+    Matrix mat6_6{arr_f_1,4,3};
+    Matrix mat7_7{arr_h_1,4,3};
+    --mat_un_1;
+    --mat1_1;
+    --mat2_2;
+    --mat3_3;
+    --mat4_4;
+    --mat5_5;
+    --mat6_6;
+    --mat7_7;
 
-
-    cout<<(true,mat3>mat1)<<endl;
-    cout<<(true,mat4>mat1)<<endl;
-    cout<<(true,mat4>mat2)<<endl;
-    cout<<(true,mat2>mat3)<<endl;
-    cout<<(true,mat4>mat3)<<endl;
-
-    cout<<(true,mat6>mat5)<<endl;
-    cout<<(true,mat7>mat6)<<endl;
-    cout<<(true,mat7>mat5)<<endl;
+    Matrix mymat();
+//    cin >> mymat;
+    cout << "col and row : " << mymat << endl;
+//
+//    ostringstream os1;
+//    cout<<mat1<<endl;
+//    os1 << mat1;
+//    cout<<(os1.str() == "[1 0 0]\n[0 1 0]\n[0 0 1]")<<endl;
+//    mat2*=mat1;
+//    cout<<(mat2== mat2_2)<<endl;
+//    mat4*=mat1;
+//    cout<<(mat4 == mat4_4)<<endl;
+//    mat3*=mat1;
+//    cout<<(mat3 == mat3_3)<<endl;
+//    mat2*=mat3;
+//    cout<<(mat2 == mat3+mat4)<<endl;
+//    mat1*=3;
+//    cout<<(mat1 == mat2)<<endl;
+//    mat1-=mat3;
+//    mat1*=4;
+//    cout<<(mat4 == mat1)<<endl;
+//    mat1-=mat2;
+//    mat1*=2;
+//    cout<<(mat3 == mat1)<<endl;
+//    mat5*= 9;
+//    mat7*=4;
+//    cout<<(mat5 == mat7)<<endl;
+//    mat4*=9;
+//    CHECK_THROWS( equalto=(mat4*5 == mat5*4));
+//    cout<<(true,mat3>mat1)<<endl;
+//    cout<<(true,mat4>mat1)<<endl;
+//    cout<<(true,mat4>mat2)<<endl;
+//    cout<<(true,mat2>mat3)<<endl;
+//    cout<<(true,mat4>mat3)<<endl;
+//
+//    cout<<(true,mat6>mat5)<<endl;
+//    cout<<(true,mat7>mat6)<<endl;
+//    cout<<(true,mat7>mat5)<<endl;
 //    mat1+=mat3;
 //    cout<<(mat2==mat1)<<endl;
 //    mat2+=mat1;
@@ -107,11 +160,12 @@ int main() {
 //        ++mat;
 //        cout << (++mat==mat1) << endl;
 
-//
-//        std::vector<double> identity = {1, 0, 0, 0, 1, 0, 0, 0, 1};
-//    std::vector<double> arr = {3, 0, 0, 0, 3, 0, 0, 0, 3};
-//    Matrix a{identity, 3, 3};  // constructor taking a vector and a matrix size
-//    cout << ++a << endl;
+
+        std::vector<double> identity = {1, 0, 0, 0, 1, 0, 0, 0, 1};
+    std::vector<double> arr = {3, 0, 0, 0, 3, 0, 0, 0, 3};
+    Matrix a{identity, 3, 3};  // constructor taking a vector and a matrix size
+    cout<<a.stri()<<endl;
+    cout << a << endl;
 //    /* prints [1 0 0]
 //              [0 1 0]
 //              [0 0 1]*/

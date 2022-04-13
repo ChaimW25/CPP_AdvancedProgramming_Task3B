@@ -3,7 +3,7 @@
 #include <string>
 #include "doctest.h"
 #include <vector>
-#include "sources/Matrix.hpp"
+#include "Matrix.hpp"
 #include <cmath>
 
 using namespace std;
@@ -180,7 +180,6 @@ TEST_CASE("CHECK ++ and -- operators"){
         Matrix matrix_(vec_, 3, 3);
         CHECK(((matrix++) == matrix_v));
         CHECK(((matrix--) == mat));
-
         CHECK(((++matrix) == mat));
         ++matrix;
         CHECK(((--matrix) == mat));
